@@ -14,6 +14,7 @@ export default {
         logIn: '注册管理员账号',
         username: '请输入账号',
         password: '请输入密码',
+        repassword: '请输入确认密码',
         captcha:'请输入验证码'
       },
     lang:'EN'
