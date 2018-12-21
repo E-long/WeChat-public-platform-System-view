@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import utils from '@/utils'
 export default {
   name: 'App',
   beforeCreate () {
@@ -13,6 +14,7 @@ export default {
       if (resp.code!=200) {
         _this.$router.push(resp.url);
       }else{
+        utils.sessionStorage.set('Install',true)
       }
     })
   }

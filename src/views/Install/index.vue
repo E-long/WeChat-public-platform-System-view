@@ -34,6 +34,7 @@
 
 <script>
 import Cookies from 'js-cookie'
+import utils from '@/utils'
 
 export default {
   name: 'login',
@@ -63,7 +64,7 @@ export default {
     onSubmit:function(){
       let _this=this;
         this.$post('/install/register',this.form).then(resp=>{
-          if(resp.code!=1){
+          if(resp.code!=200){
             _this.changeCaptcha()
             _this.$message.error(resp.msg);
           }else{
@@ -122,7 +123,7 @@ export default {
   right: 0px;
   bottom: 0px;
   background-size: cover;
-  background-image: url(https://img.alicdn.com/tfs/TB1zsNhXTtYBeNjy1XdXXXXyVXa-2252-1500.png);
+  background-image: url(https://api.dujin.org/bing/1920.php);
 }
 .login-form{
   display: flex;

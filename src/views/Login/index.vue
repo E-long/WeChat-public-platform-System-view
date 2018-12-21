@@ -78,6 +78,8 @@ export default {
            _this.$alert(resp.msg, '消息', {
                 confirmButtonText: '确定',
                 callback: action => {
+                    utils.sessionStorage.set('User',resp.data)
+                    utils.sessionStorage.set('Login',true)
                    _this.$router.push(resp.url);
                 }})
 
