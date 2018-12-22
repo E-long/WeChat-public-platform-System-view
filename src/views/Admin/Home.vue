@@ -1,6 +1,5 @@
 <template>
   <div id="Home">
-      home123123123
   </div>
 </template>
 
@@ -9,7 +8,6 @@
 export default {
   name: 'Home',
   created () {
-      this.$get('/admin/auth/test')
   }
 }
 </script>

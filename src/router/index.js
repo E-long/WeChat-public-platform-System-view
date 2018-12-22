@@ -14,7 +14,14 @@ export default new Router({
       },
 			component: resolve => require(['@/views/Login'], resolve)
     },
-    
+    {
+      path: '/logout',
+      name: 'Logout',
+      meta:{
+        login_require:false,
+      },
+			component: resolve => require(['@/views/Logout'], resolve)
+    },
     {
       path: '/install',
       name: 'Install',
@@ -38,6 +45,24 @@ export default new Router({
             login_require:true
           },
           component: () => import('@/views/Admin/Home')
+        },
+      ]
+    },
+    {
+      path: '/user',
+      name: 'User',
+      component: Layout,
+      meta:{
+        login_require:true
+      },
+      children:[
+        {
+          path: 'setting',
+          name: 'Setting',
+          meta:{
+            login_require:true
+          },
+          component: () => import('@/views/User/Setting')
         },
       ]
     },

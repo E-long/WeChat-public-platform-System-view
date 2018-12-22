@@ -8,19 +8,24 @@ import 'nprogress/nprogress.css'
 router.beforeEach((route, redirect, next) => {
     NProgress.start();
     var loginStatus=utils.sessionStorage.get('Login')||false
+    var installStatus=utils.sessionStorage.get('Install')||true
     var needLogin=route.meta.login_require;
-    if(needLogin){
-        if(!loginStatus){
-            next('/');
-        }
-        next();
-    }else{
-        if(loginStatus){
-            next('/admin/home');
-        }
-        next();
-
+    if(needLogin&&!loginStatus){
+        next('/');
+        return false;
     }
+
+    if(route.name=='Install'&&installStatus){
+        next('./');
+        return false;
+    }
+
+    if(route.name=='Login'&&loginStatus){
+        next('/admin/home')
+        return false;
+    }
+
+    next();
 	
 });
 

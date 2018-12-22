@@ -75,8 +75,8 @@ export default {
 
 
 
-           _this.$alert(resp.msg, '消息', {
-                confirmButtonText: '确定',
+           _this.$alert(_this.$t('alert.login'), _this.$t('alert.title'), {
+                confirmButtonText:_this.$t('button.confirm'),
                 callback: action => {
                     utils.sessionStorage.set('User',resp.data)
                     utils.sessionStorage.set('Login',true)

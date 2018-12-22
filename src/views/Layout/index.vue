@@ -7,14 +7,10 @@
           </el-container >
           <el-container>
             <el-aside>
-                <div class="container_box">
-                    <Sidebar></Sidebar>
-                </div>
+                <Sidebar></Sidebar>
             </el-aside>
             <el-main>
-                <div class="container_box">
-                    <AppMain></AppMain>
-                </div>
+                <AppMain></AppMain>
             </el-main>
       </el-container>
   </div>
@@ -37,5 +33,9 @@ export default {
 .container_box{
     height: calc(100vh - 62px);
     overflow: auto;
+}
+.el-header{
+    padding: 0;
+    height: 51px !important;
 }
 </style>
