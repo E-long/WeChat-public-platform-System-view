@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui';
 import i18n from './components/lang'
+import store from "@/store";
 import {post,get} from './components/axios'
 import './components/permission'
 
@@ -25,6 +26,7 @@ new Vue({
   el: '#app',
   router,
   i18n,
+  store,
   components: { App },
   template: '<App/>'
 })
