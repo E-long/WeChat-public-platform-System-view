@@ -1,63 +1,70 @@
 <template>
   <div id="Sidebar">
-    <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
-  <el-submenu index="1">
-    <template slot="title">
-      <i class="el-icon-location"></i>
-      <span slot="title">导航一</span>
-    </template>
-    <el-menu-item-group>
-      <span slot="title">分组一</span>
-      <el-menu-item index="1-1">选项1</el-menu-item>
-      <el-menu-item index="1-2">选项2</el-menu-item>
-    </el-menu-item-group>
-    <el-menu-item-group title="分组2">
-      <el-menu-item index="1-3">选项3</el-menu-item>
-    </el-menu-item-group>
-    <el-submenu index="1-4">
-      <span slot="title">选项4</span>
-      <el-menu-item index="1-4-1">选项1</el-menu-item>
-    </el-submenu>
-  </el-submenu>
-  <el-menu-item index="2">
-    <i class="el-icon-menu"></i>
-    <span slot="title">导航二</span>
-  </el-menu-item>
-  <el-menu-item index="3" disabled>
-    <i class="el-icon-document"></i>
-    <span slot="title">导航三</span>
-  </el-menu-item>
-  <el-menu-item index="4">
-    <i class="el-icon-setting"></i>
-    <span slot="title">导航四</span>
-  </el-menu-item>
-</el-menu>
+<el-collapse-transition>
+        <div v-show="sidebar.opened" class="sidebar-warp">
 
+        </div>
+      </el-collapse-transition>
 
   </div>
 </template>
 
 <script>
 
+import { mapGetters } from "vuex";
+
 export default {
   name: 'Sidebar',
   data () {
       return {
-                  isCollapse: false
 
       }
   },
+  created () {
+    let _this=this;
+    this.$get('/admin/nav').then(resp=>{
+        if (resp.code==100) {
+            if(_this.$route.name!='MenuSetting')
+            {
+                _this.$router.push({ path: resp.url })
+            }
+        }else{
+
+        }
+    }) 
+  },
    methods: {
-      handleOpen(key, keyPath) {
-        console.log(key, keyPath);
-      },
-      handleClose(key, keyPath) {
-        console.log(key, keyPath);
-      }
-    }
+    },
+  computed: {
+     ...mapGetters([
+          'sidebar'
+        ])
+  }
 
 }
 </script>
 
-<style>
+<style lang="less" scoped>
+.sidebar-warp{
+    position: absolute;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    width: 180px;
+    background-color: #333;
+    max-height: calc(100vh - 51px);
+    overflow-x:hidden;
+    overflow-y:auto;
+    &::-webkit-scrollbar-track-piece {
+        background: #333;
+    }
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: #ccc;
+        border-radius: 20px;
+    }
+}
+
 </style>

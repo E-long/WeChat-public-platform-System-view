@@ -1,7 +1,7 @@
 <template>
   <div id="Layout">
       <el-container>
-          <el-header>
+          <el-header height='51px'>
             <Navbar></Navbar>
           </el-header>
           </el-container >
@@ -30,10 +30,11 @@ export default {
 </script>
 
 <style>
-.container_box{
-    height: calc(100vh - 62px);
-    overflow: auto;
+.el-aside{
+ height: calc(100vh - 51px);
+    overflow: hidden;
 }
+
 .el-header{
     padding: 0;
     height: 51px !important;

@@ -74,7 +74,7 @@ export default {
             utils.sessionStorage.set('User',resp.data)
             utils.sessionStorage.set('Login',true)
 
-           _this.$alert(_this.$t('button.register'), _this.$t('button.title'), {
+           _this.$alert(_this.$t('alert.register'), _this.$t('alert.title'), {
                 confirmButtonText: _this.$t('button.confirm'),
                 callback: action => {
                    _this.$router.push(resp.url);

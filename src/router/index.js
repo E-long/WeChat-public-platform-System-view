@@ -46,6 +46,14 @@ export default new Router({
           },
           component: () => import('@/views/Admin/Home')
         },
+        {
+          path:'/admin/menu/setting',
+          name:'MenuSetting',
+          meta:{
+            login_require:true
+          },
+          component: () => import('@/views/Admin/Menu/Setting')
+        }
       ]
     },
     {
